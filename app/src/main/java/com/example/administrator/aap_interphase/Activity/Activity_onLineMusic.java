@@ -117,8 +117,6 @@ public class Activity_onLineMusic extends AppCompatActivity{
                                     songs.add(s);
                                     Log.d("AAA", e.select("pic").text());
                                 }
-                                /*adpter_onLine.changeData(songs);*/
-                                // recyclerView.removeAllViews();
                             }
                             runOnUiThread(new Runnable() {
                                 @Override

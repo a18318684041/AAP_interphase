@@ -1,5 +1,6 @@
 package com.example.administrator.aap_interphase.Adapter;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -87,6 +88,7 @@ public class MyAdpter_Time extends RecyclerView.Adapter<MyAdpter_Time.ViewHolder
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         context.startActivity(intent);
                                         System.exit(0);
+
                                     } catch (InterruptedException e) {
                                         e.printStackTrace();
                                     }
