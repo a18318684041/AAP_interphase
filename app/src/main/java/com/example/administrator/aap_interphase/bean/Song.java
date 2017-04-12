@@ -17,4 +17,6 @@ public class Song {
     public long size;
     //专辑头像
     public int head_img;
+    //歌手名字首字符
+    public String first_char;
 }

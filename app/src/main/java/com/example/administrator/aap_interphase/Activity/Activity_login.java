@@ -67,7 +67,19 @@ public class Activity_login extends AppCompatActivity {
                 final String username = edt_username.getText().toString();
                 String password = edt_password.getText().toString();
 
-                BmobUser bu2 = new BmobUser();
+                        if(username!=null&&password!=null){
+                            Intent intent = new Intent();
+                            intent.setClass(Activity_login.this, Activity_user.class);
+                            intent.putExtra("username",username);
+                            startActivity(intent);
+                            Toast.makeText(Activity_login.this, "登录成功", Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(Activity_login.this,"登录失败，请重试",Toast.LENGTH_LONG).show();
+                        }
+
+
+
+/*             BmobUser bu2 = new BmobUser();
                 bu2.setUsername(username);
                 bu2.setPassword(password);
                 bu2.login(new SaveListener<BmobUser>() {
@@ -85,7 +97,7 @@ public class Activity_login extends AppCompatActivity {
                         Log.d("AAAAAAAAAAAAA", e.toString());
                     }
 
-                });
+                });*/
             }
         });
     }

@@ -9,10 +9,13 @@ import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -21,8 +24,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.aap_interphase.Adapter.MyAdpter_Localmusic;
+import com.example.administrator.aap_interphase.Adapter.MyAdpter_test;
 import com.example.administrator.aap_interphase.R;
 import com.example.administrator.aap_interphase.bean.Song;
+import com.example.administrator.aap_interphase.utils.HanzitoPinyin;
 import com.example.administrator.aap_interphase.utils.Music_Utils;
 
 import java.io.IOException;
@@ -45,6 +50,12 @@ public class tab extends Fragment {
     private ImageView last;
     private ImageView next;
     private MediaPlayer mediapalyer;
+    private List<Song> songs = new ArrayList<>();
+
+
+    //侧边栏更新listview的控件
+
+    private com.example.administrator.aap_interphase.View.testView testView;
 
     //设置进度条
     private SeekBar seekbar;
@@ -90,6 +101,32 @@ public class tab extends Fragment {
         adapter = new MyAdpter_Localmusic(view.getContext(), test);
         list_view.setAdapter(adapter);
         cursor.close();
+
+        //进行侧边栏控制listview的滑动.
+        testView = (com.example.administrator.aap_interphase.View.testView) view.findViewById(R.id.slide_item);
+        TextView textView = new TextView(view.getContext());
+        testView.setTextViewDialog(textView);
+        testView.setUpdateListView(new com.example.administrator.aap_interphase.View.testView.UpdateListView() {
+            @Override
+            public void updateListView(String currentChar) {
+                int positionForSection = adapter.getPositionForSection(currentChar.charAt(0));
+                list_view.setSelection(positionForSection);
+            }
+        });
+        list_view.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int sectionForPosition = adapter.getSectionForPosition(firstVisibleItem);
+                testView.updateLetterIndexView(sectionForPosition);
+            }
+        });
+
+
         //对暂停、播放、上一首、下一首的实现
         play = (ImageView) view.findViewById(R.id.play);
         flow_name = (TextView) view.findViewById(R.id.flow_name);

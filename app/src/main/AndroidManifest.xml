@@ -25,7 +25,14 @@
         <activity android:name=".Activity.Activity_time" />
         <activity android:name=".Activity.Activity_onLineMusic" />
         <activity android:name=".Activity.Activity_song" />
+
+        <activity android:name=".Activity.Activity_test" />
     </application>
+
+
+
+
+
     <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -42,6 +49,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--允许读取手机状态 用于创建BmobInstallation-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
 </manifest>

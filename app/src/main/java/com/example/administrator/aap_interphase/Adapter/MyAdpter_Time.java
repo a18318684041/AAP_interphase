@@ -104,6 +104,8 @@ public class MyAdpter_Time extends RecyclerView.Adapter<MyAdpter_Time.ViewHolder
                         }
                     });
                     builder.show();
+                }else {
+                    Toast.makeText(context, "应用将于分钟后关闭", Toast.LENGTH_LONG).show();
                 }
 
                 new Thread(new Runnable() {

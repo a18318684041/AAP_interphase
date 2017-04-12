@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.administrator.aap_interphase.Myreceiver;
 import com.example.administrator.aap_interphase.R;
 
+import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobSMS;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
@@ -47,6 +48,7 @@ public class Activity_register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        Bmob.initialize(this, "f8838f4d3eddeeab8f7c52ba7517a893");
         init();
         //开始进行注册
         register();
